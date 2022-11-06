@@ -10,14 +10,14 @@ public class Task1 {
     private ArrayList<Position> test;
     private Stack<Position> stacks;// Cтек
     private Position currentPosition;// Определяем текущую позицию
-    public Task1() {// Устанавливаем, инициализация стека работает
+    public Task1() {
         start = new Position(1, 5);
         end = new Position(8, 7);
         currentPosition = start;
         stacks = new Stack<>();
         test = new ArrayList<>();
     }
-    public static final int map[][] = // Определяем сетку карты 10 * 10
+    public static final int map[][] = // Определяем карту 10 * 10
             {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 0, 0, 1, 0, 0, 1},
@@ -28,7 +28,7 @@ public class Task1 {
             {1, 0, 1, 0, 0, 0, 1, 1, 0, 1},
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-    public static void printMap() {// Распечатать карту
+    public static void printMap() {// Печать карты
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (map[i][j] == 1) System.out.print(" ■");
@@ -37,7 +37,7 @@ public class Task1 {
             System.out.println();
         }
     }
-    public boolean moveTop() {// Двигаться вверх
+    public boolean moveTop() {// Движение вверх
         String s = currentPosition.getPx() + "" + (currentPosition.getPy() - 1);
         if ((map[currentPosition.getPx()][currentPosition.getPy() - 1] != 1) & !isArrived(s)) {
             footPrint.add(s);
@@ -45,7 +45,7 @@ public class Task1 {
         }
         return false;
     }
-    public boolean moveRight() {// Сдвиг вправо
+    public boolean moveRight() {// Движение вправо
         String s = (currentPosition.getPx() + 1) + "" + currentPosition.getPy();
         if (map[currentPosition.getPx() + 1][currentPosition.getPy()] != 1 & !isArrived(s)) {
             footPrint.add(s);
@@ -53,7 +53,7 @@ public class Task1 {
         }
         return false;
     }
-    public boolean moveBottom() {// Двигаться вниз
+    public boolean moveBottom() {// Движение вниз
         String s = currentPosition.getPx() + "" + (currentPosition.getPy() + 1);
         if ((map[currentPosition.getPx()][currentPosition.getPy() + 1] != 1) & !isArrived(s)) {
             footPrint.add(s);
@@ -61,7 +61,7 @@ public class Task1 {
         }
         return false;
     }
-    public boolean moveLeft() {// Сдвиг влево
+    public boolean moveLeft() {// Движение влево
         String s = (currentPosition.getPx() - 1) + "" + currentPosition.getPy();
         if ((map[currentPosition.getPx() - 1][currentPosition.getPy()] != 1) & !isArrived(s)) {
             footPrint.add(s);
@@ -72,7 +72,7 @@ public class Task1 {
     public boolean isArrived(String position) {// Определяем, была ли достигнута текущая позиция
         return footPrint.contains(position);
     }
-    public void move() {// Функция перемещения перемещается в четырех направлениях соответственно, а затем помещает возможный путь в стек
+    public void move() {// Функция перемещения перемещается в четырех направлениях и помещает возможный путь в стек
         if (moveRight()) {
             Position temp = new Position(currentPosition.getPx(), currentPosition.getPy() - 1);
             test.add(temp);
@@ -90,7 +90,7 @@ public class Task1 {
             test.add(temp);
             stacks.push(temp);
         } else {
-            currentPosition = stacks.pop();// Если текущая позиция не может перемещаться во всех четырех направлениях
+            currentPosition = stacks.pop();// Если текущая позиция не может перемещаться во всех четырех направлениях, стек очищается
         }
     }
     public static void main(String[] args) {
@@ -102,7 +102,8 @@ public class Task1 {
             m.move();
         }
         printMap();
-        System.out.println("Следующее - след, длина:" + m.footPrint.size());
+        System.out.println("Длина пути:" + m.footPrint.size());
+        System.out.println("Шаги:");
         m.printFootPrint();
     }
     public void printFootPrint() {
