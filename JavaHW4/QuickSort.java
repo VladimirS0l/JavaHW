@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Task1 {
+public class QuickSort {
     static void getArr(int[] arr) {
         Random rnd = new Random();
         for (int i = 0; i < arr.length; i++) {
