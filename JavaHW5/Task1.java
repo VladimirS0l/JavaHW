@@ -38,7 +38,7 @@ public class Task1 {
   
       n6.left = n11;
       n6.right = n20;
-      // 1 2 4 7 9 3 5 6 11 20
+
       preOrder(root, "");
     }
   
@@ -58,7 +58,6 @@ public class Task1 {
   
   }
   
-  // nil
   class Node {
     int value;
   
