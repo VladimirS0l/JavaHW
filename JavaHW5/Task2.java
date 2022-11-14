@@ -22,7 +22,7 @@ public class Task2 {
 
         Cat cat2 = new Cat();
         cat2.name = "Marqiz";
-        cat2.color = "Orange";
+        cat2.color = "Peach";
         cat2.type = "British";
 
         Cat cat3 = new Cat();
